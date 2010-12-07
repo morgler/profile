@@ -18,6 +18,7 @@ alias feature='rake db:test:prepare && cucumber --drb '
 alias migrate='rake db:migrate && rake db:test:prepare'
 alias watch='watchr ./watchr-runner.rb'
 
+# Git
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }
@@ -43,14 +44,19 @@ _complete_git() {
 complete -F _complete_git git checkout
 complete -F _complete_git gco
 
+# Autotest
 export AUTOFEATURE=true
 export AUTOSPEC=true
 export EDITOR="mate -w"
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+alias clear_rvm_cache="cd ~/.rvm; find . -name '*.gem' -exec rm {} \;"
 
 # MySQL
 alias mysql=/usr/local/mysql/bin/mysql
 alias mysqladmin=/usr/local/mysql/bin/mysqladmin
 
+# Postgres
+alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
+alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
