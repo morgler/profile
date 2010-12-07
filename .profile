@@ -18,10 +18,6 @@ alias feature='rake db:test:prepare && cucumber --drb '
 alias migrate='rake db:migrate && rake db:test:prepare'
 alias watch='watchr ./watchr-runner.rb'
 
-# MySQL
-alias mysql=/usr/local/mysql/bin/mysql
-alias mysqladmin=/usr/local/mysql/bin/mysqladmin
-
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
 }
@@ -53,3 +49,8 @@ export EDITOR="mate -w"
 
 # RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# MySQL
+alias mysql=/usr/local/mysql/bin/mysql
+alias mysqladmin=/usr/local/mysql/bin/mysqladmin
+
